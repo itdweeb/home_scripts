@@ -9,8 +9,7 @@ crontab -u www-data -l > www-data-crontab
 popd
 
 pushd /tmp
-tar -pczf crontab-"$NOW".tar.gz /tmp/cron
-cp crontab-"$NOW".tar.gz /backup/backup
+tar -pczf /backup/backup/crontab-"$NOW".tar.gz /tmp/cron
 rm -rf /tmp/sql/*
 
 pushd /backup/backup

@@ -13,12 +13,9 @@ mysqldump wordpress > wordpress.sql
 popd
 
 pushd /tmp
-tar -pczf sql-"$NOW".tar.gz /tmp/sql
-popd
-
-cp /tmp/sql-"$NOW".tar.gz /backup/backup/sql
-rm /tmp/sql-"$NOW".tar.gz
+tar -pczf /backup/backup/sql/sql-"$NOW".tar.gz /tmp/sql
 rm -rf /tmp/sql/*
+popd
 
 pushd /backup/backup/sql
 find . -name "sql*" -type f -mtime +7 | xargs rm -f

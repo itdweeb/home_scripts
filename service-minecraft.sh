@@ -8,6 +8,6 @@ $RCONPATH -H $RCONHOST -p $RCONPASSWD "say SERVER BEING PATCHED! SERVER GOING OF
 
 sleep 5m
 
-journalctl stop minecraft
+systemctl stop minecraft
 sleep 15m
-journalctl start minecraft
+systemctl start minecraft
