@@ -36,7 +36,6 @@ mc_saveon() {
 	$RCONPATH -H $RCONHOST -p $RCONPASSWD "say SERVER BACKUP ENDED. Server going read-write..."
 	$RCONPATH -H $RCONHOST -p $RCONPASSWD "dynmap pause none"
 	$RCONPATH -H $RCONHOST -p $RCONPASSWD "save-on"
-	$RCONPATH -H $RCONHOST -p $RCONPASSWD "dynmap pause none"
 }
 
 ## Check and see if a worldname was given to the backup command. Use the default world, or check the optional world exists and exit if it doesn't.
@@ -78,13 +77,13 @@ mc_removeoldbackups() {
 	find . -name "*${SERVICE}_backup*" -type f -mtime +190 | xargs rm -f
 }
 
-## Rotates logfile to server.1 through server.30, designed to be called by daily cron job
+## Rotates logfile to server.1 through server.7, designed to be called by daily cron job
 
 mc_logrotate() {
 	# Server logfiles in chronological order
 	LOGLIST=$(ls -r ${MCPATH}/server.log* | grep -v lck)
 	# How many logs to keep
-	COUNT="14"
+	COUNT="7"
 	# Look at all the logfiles
 	for logfile in $LOGLIST; do
 		LOGTMP="$(basename $logfile | cut -d '.' -f 3)"
